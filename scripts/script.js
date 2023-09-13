@@ -1,13 +1,14 @@
 const userForm = document.getElementById("user-form");
 
-const LL_API_KEY = "6crqkffRap673FYh8sGYOE";
+const LL_API_KEY = "IIZXxPbv0E3BejZ6r2dkY";
 const LL_API_SECRET =
-  "Yd5cL1wuSICwdhLSLTyGa1BlTJgEJ2D7dbQATSMAkl7s0fqm8Kkjxs1NY9xLXbg3";
+  "DksS8DNXpkzJp52XFK1XDIVpIqwJOaABNUSBoCT37YRM7XrPkaV6tZ90yKoBWlyS";
 const LL_USERNAME = "juanluis9900";
+// TODO: Cambiar TERMS_URL y URL_PROGRAM ycambiar el link del webhook en el post
 const TERMS_URL =
-  "https://api.loopyloyalty.com/v1/campaign/id/3Y2oVjoEzMUDDMu9LMy1FO";
+  "https://api.loopyloyalty.com/v1/campaign/id/69IqnG9Bb5NhUEwEK4hrsN";
 let jwt = "";
-const URL_PROGRAM = "3Y2oVjoEzMUDDMu9LMy1FO";
+const URL_PROGRAM = "69IqnG9Bb5NhUEwEK4hrsN";
 
 const termsContainer = document.getElementById("terms-container");
 const priceContainer = document.getElementById("price-container");
@@ -142,7 +143,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     //Check if the user is already registered
     callWebhook(
-      "https://hook.eu1.make.com/rf6scir483gy5ls9vghehtpcmpoie16i",
+      "https://hook.eu1.make.com/ggc59ghsc7wnsmvz7hy2boztdk5dste5",
       payload,
       "check"
     )
@@ -157,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           console.log("im here");
 
           enrollUser(
-            "https://api.loopyloyalty.com/v1/enrol/3Y2oVjoEzMUDDMu9LMy1FO",
+            "https://api.loopyloyalty.com/v1/enrol/69IqnG9Bb5NhUEwEK4hrsN",
             payload,
             jwt
           ).then((data) => {
@@ -166,7 +167,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.log({ pid, cardLink });
             const hookPayload = { ...payload, pid, cardLink };
             addUser(
-              "https://hook.eu1.make.com/xzrpqy7bgmv7v76cnkxm116yu1dzqi7h",
+              "https://hook.eu1.make.com/ujfg3i1p7jro6l6aryyk2w5e77her1ya",
               hookPayload
             ).then((data) => {
               console.log(data);

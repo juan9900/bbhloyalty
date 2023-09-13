@@ -1,11 +1,11 @@
 :root {
-  --primary: rgb(130, 46, 36);
-  --primaryDarker: rgb(100, 35, 28);
-  --secondary: rgb(56, 56, 56);
+  --primary: #e7bb43;
+  --primaryDarker: #bd9937;
+  --secondary: #00c284;
 }
 
 .navbar {
-  background-color: rgb(238, 216, 192);
+  background-color: var(--primary);
 }
 
 .navbar-brand img {
