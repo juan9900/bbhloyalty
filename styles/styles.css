@@ -1,0 +1,37 @@
+:root {
+  --primary: rgb(130, 46, 36);
+  --primaryDarker: rgb(100, 35, 28);
+  --secondary: rgb(56, 56, 56);
+}
+
+.navbar {
+  background-color: rgb(238, 216, 192);
+}
+
+.navbar-brand img {
+  width: 40%;
+}
+
+.btn-primary {
+  background: var(--primary);
+  border: var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primaryDarker);
+}
+
+h1 {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+h2 {
+  color: var(--secondary);
+  display: block;
+  font-weight: 700;
+}
+
+.title-container {
+  padding: 0 1rem;
+}
