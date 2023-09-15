@@ -111,6 +111,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   userForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    // if the checkbox is not checked then display an error message and return
 
     submitButton.disabled = true;
     submitSpinner.classList.remove("d-none");
@@ -121,6 +122,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     let name = document.getElementById("nombre").value;
     let email = document.getElementById("correo").value;
     let phone = phoneInput.getNumber();
+    let terms = document.getElementById("terms-check").checked;
+
+    // if the terms is not checked, then display an error message and return
+    if (!terms) {
+      registeredContainer.innerText =
+        "Debes aceptar los términos y condiciones para poder registrarte.";
+      submitButton.disabled = false;
+      submitSpinner.classList.add("d-none");
+      return;
+    }
     if (!valid || name === "" || email === "" || phone === "") {
       registeredContainer.innerText =
         "Ocurrió un error, verifica los datos e inténtalo de nuevo.";
@@ -155,14 +166,19 @@ document.addEventListener("DOMContentLoaded", async function () {
             "Ya te encuentras registrado, verifica tu correo si necesitas recuperar tu tarjeta.";
           throw new Error("User is already registered");
         } else {
-          console.log("im here");
-
           enrollUser(
             "https://api.loopyloyalty.com/v1/enrol/69IqnG9Bb5NhUEwEK4hrsN",
             payload,
             jwt
           ).then((data) => {
             console.log(data);
+            if (data.error?.includes("is not valid")) {
+              registeredContainer.innerText =
+                "El correo electrónico no es válido, por favor utiliza uno diferente.";
+
+              submitButton.disabled = false;
+              submitSpinner.classList.add("d-none");
+            }
             const { pid, url: cardLink } = data;
             console.log({ pid, cardLink });
             const hookPayload = { ...payload, pid, cardLink };
@@ -170,7 +186,6 @@ document.addEventListener("DOMContentLoaded", async function () {
               "https://hook.eu1.make.com/ujfg3i1p7jro6l6aryyk2w5e77her1ya",
               hookPayload
             ).then((data) => {
-              console.log(data);
               // const { ok, url } = data;
               if (!data.ok) {
                 registeredContainer.innerText =
