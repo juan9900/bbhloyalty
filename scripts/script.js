@@ -178,6 +178,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
               submitButton.disabled = false;
               submitSpinner.classList.add("d-none");
+              return;
             }
             const { pid, url: cardLink } = data;
             console.log({ pid, cardLink });
