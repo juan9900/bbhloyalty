@@ -1,9 +1,9 @@
 const userForm = document.getElementById("user-form");
 
-const LL_API_KEY = "IIZXxPbv0E3BejZ6r2dkY";
+const LL_API_KEY = process.env.LL_API_KEY;
 const LL_API_SECRET =
-  "DksS8DNXpkzJp52XFK1XDIVpIqwJOaABNUSBoCT37YRM7XrPkaV6tZ90yKoBWlyS";
-const LL_USERNAME = "juanluis9900";
+process.env.LL_API_SECRET;
+const LL_USERNAME = process.env.LL_USERNAME;
 // TODO: Cambiar TERMS_URL y URL_PROGRAM ycambiar el link del webhook en el post
 const TERMS_URL =
   "https://api.loopyloyalty.com/v1/campaign/id/69IqnG9Bb5NhUEwEK4hrsN";
